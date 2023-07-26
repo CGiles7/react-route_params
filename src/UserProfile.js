@@ -6,6 +6,17 @@ function UserProfile() {
 
   // Use `useParams()` and `useEffect()`
   // Load profile data from https://jsonplaceholder.typicode.com/users/${userId}
+  const userId = useParams().userId;
+  useEffect(() => {
+    async function loadUser() {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/users/${userId}`
+      );
+      const userFromAPI = await response.json();
+      setUser(userFromAPI);
+    }
+    loadUser();
+  }, [userId]);
 
   // No need to change anything below here
   if (user.id) {

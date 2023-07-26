@@ -1,6 +1,6 @@
 import React from "react";
 import "../src/App.css";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import UserProfile from "./UserProfile";
 
 function Home() {
@@ -22,11 +22,10 @@ function App() {
               <Link to={`/user/${id}`}>User {id}</Link>
             </div>
           ))}
-        <Switch>
-          <Route exact={true} path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/user/:userId" element={<UserProfile />}></Route>
+        </Routes>
       </div>
     </Router>
   );
